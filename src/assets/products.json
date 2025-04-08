@@ -5,6 +5,19 @@
     "description": "Erős, rozsdamentes acél ásó fa nyéllel.",
     "price": 3490,
     "imageUrl": "assets/images/aso/aso_product.png"
-
+  },
+  {
+    "id": 2,
+    "name": "Gereblye",
+    "description": "Tápanyagban gazdag, prémium virágföld.",
+    "price": 1890,
+    "imageUrl": "assets/images/gereblye/gereblye_product.png"
+  },
+  {
+    "id": 3,
+    "name": "Holapat",
+    "description": "Zöld színű, erős műanyag locsolókanna.",
+    "price": 2990,
+    "imageUrl": "assets/images/holapat/holapat_product.png"
   }
 ]
