@@ -2,8 +2,15 @@
   <a routerLink="/">Főoldal</a>
   <a routerLink="/products">Termékek</a>
 
-  <span style="margin-left:auto;">
-    <a routerLink="/login">Bejelentkezés</a>
+  <span style="margin-left:auto"></span>
+
+  <ng-container *ngIf="user$ | async as user; else loggedOut">
+    👤 {{ user.email }}
+    <button (click)="logout()">Kijelentkezés</button>
+  </ng-container>
+
+  <ng-template #loggedOut>
+    <a routerLink="/login">Belépés</a>
     <a routerLink="/register">Regisztráció</a>
-  </span>
+  </ng-template>
 </nav>

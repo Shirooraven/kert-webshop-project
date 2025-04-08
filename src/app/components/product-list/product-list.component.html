@@ -1,8 +1,41 @@
-<h2>Termékeink</h2>
+<h2>Termékek listája</h2>
 
-<div *ngFor="let product of products" class="product-card">
-  <h3>{{ product.name }}</h3>
-  <img [src]="product.imageUrl" alt="{{ product.name }}" width="150">
-  <p>{{ product.description }}</p>
-  <p><strong>{{ product.price }} Ft</strong></p>
-</div>
+<table mat-table [dataSource]="products" class="mat-elevation-z2">
+
+  <!-- ID oszlop -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let product"> {{ product.id }} </td>
+  </ng-container>
+
+  <!-- Név -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Név </th>
+    <td mat-cell *matCellDef="let product"> {{ product.name }} </td>
+  </ng-container>
+
+  <!-- Leírás -->
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Leírás </th>
+    <td mat-cell *matCellDef="let product"> {{ product.description }} </td>
+  </ng-container>
+
+  <!-- Ár -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Ár (Ft) </th>
+    <td mat-cell *matCellDef="let product"> {{ product.price | number }} Ft </td>
+  </ng-container>
+
+  <!-- Kép -->
+  <ng-container matColumnDef="image">
+    <th mat-header-cell *matHeaderCellDef> Kép </th>
+    <td mat-cell *matCellDef="let product">
+      <img [src]="product.imageUrl" alt="{{ product.name }}" width="300" height="auto" />
+    </td>
+  </ng-container>
+
+  <!-- Header és cellák -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>

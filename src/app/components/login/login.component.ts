@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { AuthService } from '../../services/auth.service'; // ✅ hozzáadva
 
 @Component({
   selector: 'app-login',
@@ -11,17 +12,28 @@ import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm;
   errorMessage: string = '';
+
   constructor(
     private fb: FormBuilder,
     private auth: Auth,
+    private authService: AuthService, // ✅ beillesztve
     private router: Router
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
+    });
+  }
+
+  // ✅ Ha már be van jelentkezve a user, irányítjuk a főoldalra
+  ngOnInit(): void {
+    this.authService.currentUser$.subscribe(user => {
+      if (user) {
+        this.router.navigate(['/']);
+      }
     });
   }
 

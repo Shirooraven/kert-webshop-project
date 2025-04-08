@@ -18,6 +18,8 @@ export const appConfig: ApplicationConfig = {
       { path: 'products', component: ProductListComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
+
+      { path: '**', redirectTo: '' }
     ]),
     provideHttpClient(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),

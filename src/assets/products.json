@@ -19,5 +19,12 @@
     "description": "Zöld színű, erős műanyag locsolókanna.",
     "price": 2990,
     "imageUrl": "assets/images/holapat/holapat_product.png"
+  },
+  {
+  "id": 4,
+  "name": "Rövid Vasvilla",
+  "description": "Zöld színű, erős műanyag locsolókanna.",
+  "price": 2990,
+  "imageUrl": "assets/images/vasvilla/vasvilla_product.png"
   }
 ]
