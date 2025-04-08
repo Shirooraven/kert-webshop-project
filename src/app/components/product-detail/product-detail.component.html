@@ -1,0 +1,13 @@
+<div *ngIf="product; else notFound" class="product-detail">
+    <h2>{{ product.name }}</h2>
+    <img [src]="product.imageUrl" [alt]="product.name" width="400" />
+    <p><strong>Leírás:</strong> {{ product.description }}</p>
+    <p><strong>Ár:</strong> {{ product.price | number }} Ft</p>
+  
+    <a routerLink="/products">← Vissza a termékekhez</a>
+  </div>
+  
+  <ng-template #notFound>
+    <p>A termék nem található.</p>
+  </ng-template>
+  
