@@ -17,7 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/kert-webshop",
+            "outputPath": "docs",
+            "baseHref": "/kert-webshop-project/",
+
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
