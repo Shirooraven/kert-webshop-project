@@ -1,8 +1,7 @@
 <h2>Termékek listája</h2>
 
 <table mat-table [dataSource]="products" class="mat-elevation-z2" style="width: 100%;">
-
-  <!-- ID oszlop -->
+  <!-- ID -->
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> ID </th>
     <td mat-cell *matCellDef="let product"> {{ product.id }} </td>
@@ -30,20 +29,44 @@
   <ng-container matColumnDef="image">
     <th mat-header-cell *matHeaderCellDef> Kép </th>
     <td mat-cell *matCellDef="let product">
-      <img [src]="product.imageUrl" alt="{{ product.name }}" width="120" height="auto" />
+      <img [src]="product.imageUrl" alt="{{ product.name }}" width="100" />
     </td>
   </ng-container>
 
-  <!-- Megnyitás gomb -->
+  <!-- Művelet oszlop -->
   <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef> Részletek </th>
+    <th mat-header-cell *matHeaderCellDef> Művelet </th>
     <td mat-cell *matCellDef="let product">
-      <a mat-button color="primary" [routerLink]="['/products', product.id]">Megnyitás</a>
+
+      <!-- ✅ Admin jogosultság ellenőrzés -->
+      <ng-container *ngIf="isAdmin; else nonAdminView">
+        <ng-container *ngIf="!product.disabled; else adminDisabledBlock">
+          <a mat-button color="primary" [routerLink]="['/products', product.id]">Megnyitás</a>
+          <button mat-button color="warn" (click)="disableProduct(product)">Letiltás</button>
+        </ng-container>
+
+        <ng-template #adminDisabledBlock>
+          <p style="color: red; display: inline-block; margin-right: 8px;">
+            A termék jelenleg nem elérhető
+          </p>
+          <button mat-button color="accent" (click)="enableProduct(product)">Engedélyezés</button>
+        </ng-template>
+      </ng-container>
+
+      <!-- ❌ Nem admin felhasználó nézete -->
+      <ng-template #nonAdminView>
+        <ng-container *ngIf="!product.disabled; else onlyText">
+          <a mat-button color="primary" [routerLink]="['/products', product.id]">Megnyitás</a>
+        </ng-container>
+        <ng-template #onlyText>
+          <p style="color: red;">A termék jelenleg nem elérhető</p>
+        </ng-template>
+      </ng-template>
+
     </td>
   </ng-container>
 
-  <!-- Header és cellák -->
+  <!-- Sorok -->
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
 </table>

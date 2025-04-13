@@ -1,17 +1,21 @@
 <div class="auth-container">
-    <h2>Regisztráció</h2>
-  
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
-      <label>Email</label>
-      <input type="email" formControlName="email" placeholder="example@email.com" />
-  
-      <label>Jelszó</label>
-      <input type="password" formControlName="password" placeholder="********" />
-  
-      <button type="submit">Fiók létrehozása</button>
-    </form>
-  
-    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
-    <p>Van már fiókod? <a routerLink="/login">Lépj be!</a></p>
-  </div>
-  
+  <h2>Regisztráció</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+    <label>Email</label>
+    <input type="email" formControlName="email" placeholder="example@email.com" />
+
+    <label>Jelszó</label>
+    <input type="password" formControlName="password" placeholder="********" />
+
+    <button type="submit">Fiók létrehozása</button>
+  </form>
+
+  <!-- ✅ Sikeres regisztráció üzenet -->
+  <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+
+  <!-- ❌ Hibaüzenet -->
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+  <p>Van már fiókod? <a routerLink="/login">Lépj be!</a></p>
+</div>
