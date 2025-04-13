@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Kerti ásó",
+    "description": "Erős, rozsdamentes acél ásó fa nyéllel.",
+    "price": 3490,
+    "imageUrl": "https://i.imgur.com/BtS2Z5z.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Gereblye",
+    "description": "Tápanyagban gazdag, prémium virágföld.",
+    "price": 1890,
+    "imageUrl": "https://i.imgur.com/BtS2Z5z.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Holapat",
+    "description": "Zöld színű, erős műanyag locsolókanna.",
+    "price": 2990,
+    "imageUrl": "https://i.imgur.com/BtS2Z5z.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Rövid Vasvilla",
+    "description": "Zöld színű, erős műanyag locsolókanna.",
+    "price": 2990,
+    "imageUrl": "https://i.imgur.com/BtS2Z5z.jpg"
+  }
+]
