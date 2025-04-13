@@ -16,25 +16,26 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
-"options": {
-  "outputPath": "docs/browser",
-  "index": "src/index.html",
-  "baseHref": "/kert-webshop-project/",
-  "polyfills": [
-    "zone.js"
-  ],
-  "tsConfig": "tsconfig.app.json",
-  "inlineStyleLanguage": "scss",
-  "assets": [
-    "src/assets",
-    "src/favicon.ico"
-  ],
-  "styles": [
-    "@angular/material/prebuilt-themes/cyan-orange.css",
-    "src/styles.scss"
-  ],
-  "scripts": []
-},
+          "options": {
+            "outputPath": "docs",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "baseHref": "/kert-webshop-project/",
+            "assets": [
+              "src/assets",
+              "src/favicon.ico"
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/cyan-orange.css",
+              "src/styles.scss"
+            ],
+            "scripts": []
+          },
           "configurations": {
             "production": {
               "budgets": [
