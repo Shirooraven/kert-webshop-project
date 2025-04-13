@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule], // 👈 EZ KELL a routerLink működéséhez
+  imports: [RouterModule], 
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

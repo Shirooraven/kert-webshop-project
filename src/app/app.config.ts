@@ -29,6 +29,6 @@ export const appConfig: ApplicationConfig = {
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    provideDatabase(() => getDatabase()) // ✅ ez kellett, már benne van helyesen
+    provideDatabase(() => getDatabase())
   ]
 };

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
-import { AuthService } from '../../services/auth.service'; // ✅ hozzáadva
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: Auth,
-    private authService: AuthService, // ✅ beillesztve
+    private authService: AuthService, 
     private router: Router
   ) {
     this.loginForm = this.fb.group({
@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // ✅ Ha már be van jelentkezve a user, irányítjuk a főoldalra
   ngOnInit(): void {
     this.authService.currentUser$.subscribe(user => {
       if (user) {
