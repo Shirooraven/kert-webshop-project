@@ -6,6 +6,7 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { FlowersComponent } from './components/flowers/flowers.component';
 
 import { environment } from '../environments/environment';
 
@@ -23,6 +24,7 @@ export const appConfig: ApplicationConfig = {
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'products/:id', component: ProductDetailComponent },
+{ path: 'flowers', component: FlowersComponent },
 
       // ✅ IDE JÖN a cart route – válaszd az alábbiak közül az egyiket:
 

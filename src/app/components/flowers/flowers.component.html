@@ -1,0 +1,62 @@
+<div class="flowers-wrapper">
+ <div class="notice">
+    🌻 <strong>Jelenleg nem elérhető – virágaink csak ősszel rendelhetők.</strong>
+  </div>
+  <!-- 1. WHERE feltétel – romantikus virágok -->
+  <section class="flower-section">
+    <h2>🌸 Romantikus virágok</h2>
+    <ul>
+      <li *ngFor="let flower of romanticFlowers">
+        <p><strong>Név:</strong> {{ flower.name }}</p>
+        <p><strong>Kategória:</strong> {{ flower.category }}</p>
+        <p><strong>Szín:</strong> {{ flower.color }}</p>
+        <p><strong>Ár:</strong> {{ flower.price }} Ft</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 2. ORDER BY – ár szerint növekvő -->
+  <section class="flower-section">
+    <h2>📈 Ár szerint növekvő</h2>
+    <ul>
+      <li *ngFor="let flower of orderedFlowers">
+        <p><strong>Név:</strong> {{ flower.name }}</p>
+        <p><strong>Kategória:</strong> {{ flower.category }}</p>
+        <p><strong>Szín:</strong> {{ flower.color }}</p>
+        <p><strong>Ár:</strong> {{ flower.price }} Ft</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 3. LIMIT – legolcsóbb N virág -->
+  <section class="flower-section">
+    <h2>💰 Legolcsóbb {{ pageSize }} virág</h2>
+    <ul>
+      <li *ngFor="let flower of cheapestFlowers">
+        <p><strong>Név:</strong> {{ flower.name }}</p>
+        <p><strong>Kategória:</strong> {{ flower.category }}</p>
+        <p><strong>Szín:</strong> {{ flower.color }}</p>
+        <p><strong>Ár:</strong> {{ flower.price }} Ft</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 4. STARTAFTER + LIMIT – lapozható lista -->
+  <section class="flower-section">
+    <h2>📄 Lapozható lista</h2>
+    <ul>
+      <li *ngFor="let flower of pagedFlowers">
+        <p><strong>Név:</strong> {{ flower.name }}</p>
+        <p><strong>Kategória:</strong> {{ flower.category }}</p>
+        <p><strong>Szín:</strong> {{ flower.color }}</p>
+        <p><strong>Ár:</strong> {{ flower.price }} Ft</p>
+      </li>
+    </ul>
+
+    <div class="pagination-buttons">
+      <button (click)="loadPreviousPage()" [disabled]="currentPageIndex === 0">⬅️ Előző oldal</button>
+      <button (click)="loadNextPage()">Következő oldal ➡️</button>
+    </div>
+  </section>
+
+</div>
