@@ -42,7 +42,7 @@ export class ProductListComponent implements OnInit {
 
   isAdmin: boolean = false;
 
-  categories: string[] = ['	Virágföld', 'Gereblye', 'Locsolókanna', 'Metszőolló'];
+  categories: string[] = ['Virágföld 20L', 'Gereblye', 'Locsolókanna', 'Metszőolló'];
   selectedCategory: string | null = null;
   priceRange = { min: 0, max: 10000 };
   searchTerm: string = '';
