@@ -1,6 +1,6 @@
 // src/app/models/product.ts
 export interface Product {
-  id: number;
+  id: string | number; // ← így mindkettőt elfogadja
   name: string;
   description: string;
   price: number;
