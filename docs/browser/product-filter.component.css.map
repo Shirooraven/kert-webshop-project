@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/product-filter/product-filter.component.scss"],
+  "sourcesContent": [".filter-panel {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    gap: 1rem;\r\n    margin-bottom: 1.5rem;\r\n    align-items: center;\r\n  \r\n    .form-group {\r\n      display: flex;\r\n      flex-direction: column;\r\n      min-width: 160px;\r\n    }\r\n  \r\n    select,\r\n    input {\r\n      padding: 6px;\r\n      font-size: 14px;\r\n      border-radius: 4px;\r\n      border: 1px solid #ccc;\r\n    }\r\n  \r\n    button {\r\n      align-self: flex-start;\r\n    }\r\n  }\r\n  "],
+  "mappings": ";AAAA,CAAA;AACI,WAAA;AACA,aAAA;AACA,OAAA;AACA,iBAAA;AACA,eAAA;;AAEA,CAPJ,aAOI,CAAA;AACE,WAAA;AACA,kBAAA;AACA,aAAA;;AAGF,CAbJ,aAaI;AAAA,CAbJ,aAaI;AAEE,WAAA;AACA,aAAA;AACA,iBAAA;AACA,UAAA,IAAA,MAAA;;AAGF,CArBJ,aAqBI;AACE,cAAA;;",
+  "names": []
+}
