@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/home/home.component.scss"],
+  "sourcesContent": ["button {\r\n    padding: 0.5rem 1rem;\r\n    font-size: 1.1rem;\r\n    background-color: #4caf50;\r\n    color: white;\r\n    border: none;\r\n    border-radius: 8px;\r\n    cursor: pointer;\r\n    transition: background-color 0.3s ease;\r\n  \r\n    &:hover {\r\n      background-color: #388e3c;\r\n    }\r\n  }\r\n  "],
+  "mappings": ";AAAA;AACI,WAAA,OAAA;AACA,aAAA;AACA,oBAAA;AACA,SAAA;AACA,UAAA;AACA,iBAAA;AACA,UAAA;AACA,cAAA,iBAAA,KAAA;;AAEA,MAAA;AACE,oBAAA;;",
+  "names": []
+}
