@@ -23,6 +23,15 @@ export const appConfig: ApplicationConfig = {
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'products/:id', component: ProductDetailComponent },
+
+      // ✅ IDE JÖN a cart route – válaszd az alábbiak közül az egyiket:
+
+      // ➤ ha klasszikus:
+      // { path: 'cart', component: CartComponent }
+
+      // ➤ ha standalone:
+      { path: 'cart', loadComponent: () => import('./components/cart/cart.component').then(m => m.CartComponent) },
+
       { path: '**', redirectTo: '' }
     ]),
     provideHttpClient(),

@@ -1,0 +1,55 @@
+<div class="cart-container">
+  <h2 class="title">🛒 Kosár tartalma</h2>
+
+  <mat-divider class="mb-4"></mat-divider>
+
+  <div *ngIf="cartItems.length > 0; else emptyCart">
+    <mat-card *ngFor="let item of cartItems" class="product-card">
+      <mat-card-title>{{ item.name }}</mat-card-title>
+      <mat-card-content>
+        <p>Ár: {{ item.price | currency:'HUF' }}</p>
+        <p>Mennyiség: {{ item.quantity }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-icon-button color="warn" (click)="removeItem(item)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-divider class="my-4"></mat-divider>
+
+    <form (ngSubmit)="checkout()" #orderForm="ngForm" class="order-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Név</mat-label>
+        <input matInput required [(ngModel)]="orderData.name" name="name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput required type="email" [(ngModel)]="orderData.email" name="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Szállítási cím</mat-label>
+        <textarea matInput required [(ngModel)]="orderData.address" name="address"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Telefonszám</mat-label>
+        <input matInput required type="tel" [(ngModel)]="orderData.phone" name="phone">
+      </mat-form-field>
+
+      <div class="order-summary">
+        <h3>Végösszeg: {{ getTotal() | currency:'HUF' }}</h3>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!orderForm.form.valid">
+          Megrendelés leadása
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <ng-template #emptyCart>
+    <p class="empty-message">A kosarad üres.</p>
+  </ng-template>
+</div>

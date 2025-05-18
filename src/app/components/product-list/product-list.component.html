@@ -1,72 +1,78 @@
 <h2>Termékek listája</h2>
+<h3 style="margin-bottom: 1rem; font-weight: normal; color: #555;">
+  📸 Kattints a képre a részletekért
+</h3>
+
+<app-product-filter
+  [categories]="categories"
+  [selectedCategory]="selectedCategory"
+  [priceRange]="priceRange"
+  [searchTerm]="searchTerm"
+  (categoryChange)="onCategoryChange($event)"
+  (priceRangeChange)="onPriceRangeChange($event)"
+  (searchTermChange)="onSearchTermChange($event)"
+  (applyFilters)="onApplyFilters()"
+  (resetFilters)="onResetFilters()"
+></app-product-filter>
 
 <table mat-table [dataSource]="products" class="mat-elevation-z2" style="width: 100%;">
-  <!-- ID -->
+
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> ID </th>
     <td mat-cell *matCellDef="let product"> {{ product.id }} </td>
   </ng-container>
 
-  <!-- Név -->
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Név </th>
     <td mat-cell *matCellDef="let product"> {{ product.name }} </td>
   </ng-container>
 
-  <!-- Leírás -->
   <ng-container matColumnDef="description">
     <th mat-header-cell *matHeaderCellDef> Leírás </th>
     <td mat-cell *matCellDef="let product"> {{ product.description }} </td>
   </ng-container>
 
-  <!-- Ár -->
   <ng-container matColumnDef="price">
     <th mat-header-cell *matHeaderCellDef> Ár (Ft) </th>
     <td mat-cell *matCellDef="let product"> {{ product.price | number }} Ft </td>
   </ng-container>
 
-  <!-- Kép -->
-  <ng-container matColumnDef="image">
+  <ng-container matColumnDef="imageUrl">
     <th mat-header-cell *matHeaderCellDef> Kép </th>
     <td mat-cell *matCellDef="let product">
-      <img [src]="product.imageUrl" alt="{{ product.name }}" width="100" />
+      <a *ngIf="!product.disabled; else disabledImg"
+         [routerLink]="['/products', product.id]"
+         style="display: inline-block; cursor: pointer;">
+        <img [src]="product.imageUrl" alt="{{ product.name }}" width="80" />
+      </a>
+      <ng-template #disabledImg>
+        <img [src]="product.imageUrl" alt="{{ product.name }}" width="80" style="opacity: 0.5; cursor: default;" />
+      </ng-template>
     </td>
   </ng-container>
 
-  <!-- Művelet oszlop -->
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef> Művelet </th>
     <td mat-cell *matCellDef="let product">
+      <button mat-icon-button color="accent" (click)="addToCart(product)">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
 
-      <!-- ✅ Admin jogosultság ellenőrzés -->
-      <ng-container *ngIf="isAdmin; else nonAdminView">
-        <ng-container *ngIf="!product.disabled; else adminDisabledBlock">
-          <a mat-button color="primary" [routerLink]="['/products', product.id]">Megnyitás</a>
-          <button mat-button color="warn" (click)="disableProduct(product)">Letiltás</button>
-        </ng-container>
-
-        <ng-template #adminDisabledBlock>
-          <p style="color: red; display: inline-block; margin-right: 8px;">
-            A termék jelenleg nem elérhető
-          </p>
-          <button mat-button color="accent" (click)="enableProduct(product)">Engedélyezés</button>
+      <ng-container *ngIf="isAdmin; else userView">
+        <button mat-button color="warn" *ngIf="!product.disabled; else enableTpl" (click)="disableProduct(product)">
+          Letiltás
+        </button>
+        <ng-template #enableTpl>
+          <button mat-button color="primary" (click)="enableProduct(product)">
+            Engedélyezés
+          </button>
         </ng-template>
       </ng-container>
 
-      <!-- ❌ Nem admin felhasználó nézete -->
-      <ng-template #nonAdminView>
-        <ng-container *ngIf="!product.disabled; else onlyText">
-          <a mat-button color="primary" [routerLink]="['/products', product.id]">Megnyitás</a>
-        </ng-container>
-        <ng-template #onlyText>
-          <p style="color: red;">A termék jelenleg nem elérhető</p>
-        </ng-template>
-      </ng-template>
-
+      <ng-template #userView></ng-template>
     </td>
   </ng-container>
 
-  <!-- Sorok -->
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>

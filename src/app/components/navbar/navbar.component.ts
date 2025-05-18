@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, AsyncPipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { AsyncPipe } from '@angular/common';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,11 +13,20 @@ import { AsyncPipe } from '@angular/common';
 })
 export class NavbarComponent {
   authService = inject(AuthService);
+  cartService = inject(CartService);
   user$ = this.authService.currentUser$;
+
+  cartCount = 0;
+
+  constructor() {
+    this.cartService.cartItems$.subscribe(items => {
+      this.cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
+    });
+  }
 
   logout() {
     this.authService.logout().then(() => {
-      location.reload(); // vagy navigate
+      location.reload();
     });
   }
 }

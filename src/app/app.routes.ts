@@ -4,14 +4,15 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-
-
-
+import { CartComponent } from './components/cart/cart.component'; // ⬅️ ezt hozzáadod
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'products/:id', component: ProductDetailComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'cart', component: CartComponent }, // ⬅️ ez kell a működéshez
+  { path: 'cart', loadComponent: () => import('./components/cart/cart.component').then(m => m.CartComponent) }
+
 ];

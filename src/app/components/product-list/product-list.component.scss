@@ -1,13 +1,16 @@
-.mat-table {
-  background-color: #fff;
-  color: #222;
-}
-
+/* Fejléc háttérszínének módosítása */
 .mat-header-cell {
-  color: #111;
-  font-weight: 600;
+  background-color: #fff !important; /* Fehér háttér */
+  color: #333 !important; /* Sötétebb szöveg a fejlécben */
 }
 
+/* Az összes cella háttérszínének módosítása */
 .mat-cell {
-  color: #2c2c2c;
+  background-color: #fff !important; /* Fehér háttér minden cellában */
+  color: #333 !important; /* Olvasható szöveg színe */
+}
+
+/* Ha van táblázat sávos megjelenítés, azt is felülírhatjuk */
+.mat-table {
+  background-color: #fff !important; /* Fehér háttér a táblázatnak */
 }

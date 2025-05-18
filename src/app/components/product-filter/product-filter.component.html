@@ -1,0 +1,46 @@
+<div class="filter-panel">
+  <!-- Szöveges kereső -->
+  <div class="form-group">
+    <label for="search">Keresés név/leírás alapján:</label>
+    <input
+      id="search"
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="onSearchChange()"
+      placeholder="Pl.: gereblye"
+    />
+  </div>
+
+  <!-- Kategória -->
+  <div class="form-group">
+    <label for="category">Kategória:</label>
+    <select id="category" [(ngModel)]="categoryModel" (change)="onCategorySelect()">
+      <option value="">Összes</option>
+      <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+    </select>
+  </div>
+
+  <!-- Ár -->
+  <div class="form-group">
+    <label>Ár (Ft):</label>
+    <input
+      type="number"
+      [(ngModel)]="priceModel.min"
+      (blur)="onPriceChange()"
+      placeholder="Minimum"
+    />
+    –
+    <input
+      type="number"
+      [(ngModel)]="priceModel.max"
+      (blur)="onPriceChange()"
+      placeholder="Maximum"
+    />
+  </div>
+
+  <!-- Gombok -->
+  <div class="form-group button-group">
+    <button mat-button color="primary" (click)="onApply()">Szűrés alkalmazása</button>
+    <button mat-button color="warn" (click)="onReset()">Szűrés törlése</button>
+  </div>
+</div>

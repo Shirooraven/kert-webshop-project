@@ -1,0 +1,78 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: #2c2c2c;
+}
+
+.product-card {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 1.5rem;
+  background-color: #2c9e58;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.order-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: #1a1a1a;
+}
+
+.mat-form-field {
+  width: 100%;
+  text-align: left; // a mező maradjon balos, de maga a form középen
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix input,
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix textarea {
+  color: #212121 !important;
+  background-color: #ffffff !important;
+  caret-color: #212121 !important;
+}
+
+::ng-deep .mat-form-field-label {
+  color: #333 !important;
+}
+
+::ng-deep .mat-input-element::placeholder {
+  color: #757575 !important;
+  opacity: 1 !important;
+}
+
+.empty-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 2rem;
+}

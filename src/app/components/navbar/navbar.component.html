@@ -5,7 +5,11 @@
   <span style="margin-left:auto"></span>
 
   <ng-container *ngIf="user$ | async as user; else loggedOut">
-    👤 {{ user.email }}
+    <a routerLink="/cart" class="cart-link">
+      🛒 Kosár
+      <span class="cart-badge" *ngIf="cartCount > 0">{{ cartCount }}</span>
+    </a>
+    <span style="margin: 0 1rem;">👤 {{ user.email }}</span>
     <button (click)="logout()">Kijelentkezés</button>
   </ng-container>
 
