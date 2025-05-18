@@ -1,8 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule, AsyncPipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
+
 import { AuthService } from '../../services/auth.service';
-import { CartService } from '../../services/cart.service';
+import { CartService, CartItem } from '../../services/cart.service';
+import { Observable } from 'rxjs';
+import { User } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-navbar',
@@ -11,22 +15,33 @@ import { CartService } from '../../services/cart.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
-  authService = inject(AuthService);
-  cartService = inject(CartService);
-  user$ = this.authService.currentUser$;
+export class NavbarComponent implements OnInit {
+  user$!: Observable<User | null>;
+  cartCount: number = 0;
+  menuOpen: boolean = false;
 
-  cartCount = 0;
+  constructor(
+    private authService: AuthService,
+    private cartService: CartService
+  ) {}
 
-  constructor() {
-    this.cartService.cartItems$.subscribe(items => {
+  ngOnInit(): void {
+    this.user$ = this.authService.currentUser$;
+
+    this.cartService.cartItems$.subscribe((items: CartItem[]) => {
       this.cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
     });
   }
 
-  logout() {
-    this.authService.logout().then(() => {
-      location.reload();
-    });
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  closeMenu(): void {
+    this.menuOpen = false;
+  }
+
+  logout(): void {
+    this.authService.logout().then(() => location.reload());
   }
 }

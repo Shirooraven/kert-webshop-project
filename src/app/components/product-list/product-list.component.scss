@@ -1,16 +1,63 @@
-/* Fejléc háttérszínének módosítása */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.full-width-table {
+  min-width: 700px;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: #3f3f3f;
+}
+
 .mat-header-cell {
-  background-color: #fff !important; /* Fehér háttér */
-  color: #333 !important; /* Sötétebb szöveg a fejlécben */
+  background-color: #f7f7f7 !important;
+  color: #333 !important;
+  font-weight: bold;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
 }
 
-/* Az összes cella háttérszínének módosítása */
 .mat-cell {
-  background-color: #fff !important; /* Fehér háttér minden cellában */
-  color: #333 !important; /* Olvasható szöveg színe */
+  background-color: #fff !important;
+  color: #333;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
 }
 
-/* Ha van táblázat sávos megjelenítés, azt is felülírhatjuk */
-.mat-table {
-  background-color: #fff !important; /* Fehér háttér a táblázatnak */
+.mat-row:hover {
+  background-color: #f0f8ff;
+  transition: background-color 0.2s ease;
+}
+
+.description-cell {
+  display: inline-block;
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+img {
+  max-width: 100px;
+  border-radius: 4px;
+}
+
+/* Rejt bizonyos oszlopokat mobilon */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none;
+  }
+
+  .mat-header-cell,
+  .mat-cell {
+    font-size: 0.875rem;
+    padding: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .table-wrapper {
+    margin-bottom: 1rem;
+  }
 }

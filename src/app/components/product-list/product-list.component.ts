@@ -5,6 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card'; 
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { Product } from '../../models/product.model';
 import { ProductService } from '../../services/product.service';
@@ -23,9 +25,11 @@ import { ProductFilterComponent } from '../product-filter/product-filter.compone
     MatTableModule,
     MatButtonModule,
     MatIconModule,
-    RouterModule,
     MatSnackBarModule,
-    ProductFilterComponent
+    RouterModule,
+    MatCardModule,              // <- EZT ADD HOZZÁ
+    ProductFilterComponent,
+    MatTooltipModule
   ],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']

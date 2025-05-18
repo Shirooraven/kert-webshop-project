@@ -1,7 +1,8 @@
-nav {
+.navbar {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
   padding: 1rem;
   background-color: #eef;
   border-bottom: 1px solid #ccc;
@@ -9,18 +10,19 @@ nav {
   a {
     text-decoration: none;
     color: #333;
-    position: relative;
-    font-weight: 500;
+    margin-right: 1rem;
+  }
 
-    &:hover {
-      text-decoration: underline;
-    }
+  button {
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    font-size: 1rem;
   }
 
   .cart-link {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
+    position: relative;
   }
 
   .cart-badge {
@@ -29,18 +31,38 @@ nav {
     font-size: 0.75rem;
     padding: 0.2rem 0.5rem;
     border-radius: 999px;
-    margin-left: 0.2rem;
+    margin-left: 0.3rem;
   }
 
-  button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #333;
-    font-weight: 500;
+  .menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+  }
 
-    &:hover {
-      text-decoration: underline;
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 1rem;
+
+    a, button {
+      margin: 0.5rem 0;
+    }
+  }
+
+  .mobile-menu.open {
+    display: flex;
+  }
+
+  // Mobilnézet
+  @media (max-width: 768px) {
+    .nav-left,
+    .nav-right {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: block;
     }
   }
 }

@@ -1,20 +1,43 @@
-<nav>
-  <a routerLink="/">Főoldal</a>
-  <a routerLink="/products">Termékek</a>
+<nav class="navbar">
+  <div class="nav-left">
+    <a routerLink="/">Főoldal</a>
+    <a routerLink="/products">Termékek</a>
+  </div>
 
-  <span style="margin-left:auto"></span>
-
-  <ng-container *ngIf="user$ | async as user; else loggedOut">
+  <div class="nav-right" *ngIf="user$ | async as user; else loggedOut">
     <a routerLink="/cart" class="cart-link">
-      🛒 Kosár
-      <span class="cart-badge" *ngIf="cartCount > 0">{{ cartCount }}</span>
+      🛒 Kosár <span class="cart-badge" *ngIf="cartCount > 0">{{ cartCount }}</span>
     </a>
-    <span style="margin: 0 1rem;">👤 {{ user.email }}</span>
+    <span class="user-email">👤 {{ user.email }}</span>
     <button (click)="logout()">Kijelentkezés</button>
-  </ng-container>
+  </div>
 
   <ng-template #loggedOut>
-    <a routerLink="/login">Belépés</a>
-    <a routerLink="/register">Regisztráció</a>
+    <div class="nav-right">
+      <a routerLink="/login">Belépés</a>
+      <a routerLink="/register">Regisztráció</a>
+    </div>
   </ng-template>
+
+  <!-- Hamburger ikon -->
+  <button class="menu-toggle" (click)="toggleMenu()">
+    ☰
+  </button>
+
+  <!-- Mobil lenyíló menü -->
+  <div class="mobile-menu" [class.open]="menuOpen">
+    <a routerLink="/" (click)="closeMenu()">Főoldal</a>
+    <a routerLink="/products" (click)="closeMenu()">Termékek</a>
+    <a routerLink="/cart" (click)="closeMenu()">🛒 Kosár ({{ cartCount }})</a>
+
+    <ng-container *ngIf="user$ | async as user; else loggedOutMobile">
+      <span class="user-email">👤 {{ user.email }}</span>
+      <button (click)="logout(); closeMenu()">Kijelentkezés</button>
+    </ng-container>
+
+    <ng-template #loggedOutMobile>
+      <a routerLink="/login" (click)="closeMenu()">Belépés</a>
+      <a routerLink="/register" (click)="closeMenu()">Regisztráció</a>
+    </ng-template>
+  </div>
 </nav>
